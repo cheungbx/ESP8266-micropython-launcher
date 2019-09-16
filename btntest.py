@@ -10,16 +10,16 @@
 # D1/MOSI- D7 (=GPIO13=HMOSI)
 # RES    - D0 (=GPIO16)
 # DC     - D4 (=GPIO2)
-# CS     - D1 (=GPIO5)
+# CS     - D3 (=GPIO0)
 # Speaker
 # GPIO15   D8  Speaker
 # n.c.   - D6  (=GPIO13=HMOSI)
 #
-# GPIO0    D3——   A
-# GPIO0    D2——   B or Control of Paddle
+# GPIO5    D1——   On to read ADC for Btn
+# GPIO4    D2——   On to read ADC for Paddle
 #
 # buttons   A0
-# A0 VCC-10K0-U-10K-L-10K-R-10K-D-10K-GND 
+# A0 VCC-9K-U-9K-L-12K-R-9K-D-9K-A-12K-B-9K-GND 
 
 import os
 import sys
@@ -34,7 +34,7 @@ from random import getrandbits, seed
 # configure oled display SPI SSD1306
 hspi = SPI(1, baudrate=8000000, polarity=0, phase=0)
 #DC, RES, CS 
-display = ssd1306.SSD1306_SPI(128, 64, hspi, Pin(2), Pin(16), Pin(5)) 
+display = ssd1306.SSD1306_SPI(128, 64, hspi, Pin(2), Pin(16), Pin(0)) 
 
 
 
@@ -50,7 +50,7 @@ btnB = 6
 Btns = 0
 lastBtns = 0
 
-pinBtn = Pin(0, Pin.OUT)
+pinBtn = Pin(5, Pin.OUT)
 pinPaddle = Pin(4, Pin.OUT)
 
 
