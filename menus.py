@@ -17,7 +17,7 @@ btnB = 6
 Btns = 0
 lastBtns = 0
 
-pinBtn = Pin(0, Pin.OUT)
+pinBtn = Pin(5, Pin.OUT)
 pinPaddle = Pin(4, Pin.OUT)
 buzzer = Pin(15, Pin.OUT)
 
@@ -101,7 +101,7 @@ def do_menu () :
   # configure oled display I2C SSD1306
   hspi = SPI(1, baudrate=8000000, polarity=0, phase=0)
   #DC, RES, CS 
-  display = ssd1306.SSD1306_SPI(128, 64, hspi, Pin(2), Pin(16), Pin(5)) 
+  display = ssd1306.SSD1306_SPI(128, 64, hspi, Pin(2), Pin(16), Pin(0)) 
 
   SKIP_NAMES = ("boot", "main", "menus")
 
