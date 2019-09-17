@@ -143,7 +143,7 @@ def do_menu () :
     display.show()
     getBtn()
 
-    if pressed(btnU):
+    if pressed(btnU,True):
       if screen_pos > 0 :
         screen_pos -= 1
       else :
@@ -151,7 +151,7 @@ def do_menu () :
             file_pos = max (0, file_pos - tot_rows)
             screen_pos=tot_rows-1
             
-    if pressed(btnD):
+    if pressed(btnD,True):
       if screen_pos < min(tot_file - file_pos - 1, tot_rows -1) :
         screen_pos = min(tot_file-1, screen_pos + 1)
       else :
@@ -159,7 +159,7 @@ def do_menu () :
           file_pos = min (tot_file, file_pos + tot_rows)
           screen_pos=0
 
-    if pressed(btnR):
+    if pressed(btnR,True):
       display.fill(0)
       display.text("launching " , 5, 20, 1) 
       display.text(module_names[file_pos + screen_pos], 5, 40, 1) 
@@ -168,7 +168,7 @@ def do_menu () :
       module_name = module_names[file_pos + screen_pos] 
       return True
 
-    if pressed(btnL):
+    if pressed(btnL,True):
       launched = True  
       display.fill(0)
       display.text("exited ", 5, 24, 1) 
