@@ -98,6 +98,9 @@ def getBtn () :
         
 def do_menu () :
   global module_name
+
+  pinBtn = Pin(5, Pin.OUT)
+  pinPaddle = Pin(4, Pin.OUT)
   
   from machine import SPI
   import ssd1306
@@ -178,12 +181,14 @@ def do_menu () :
     
 go_on = True
 while go_on :
+
   go_on = do_menu()
   if go_on :
     gc.collect()
     module = __import__(module_name)
     del sys.modules[module_name]
     gc.collect()
+
 
 
 
